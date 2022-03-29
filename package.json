@@ -1,0 +1,23 @@
+{
+  "name": "chhobi-prodorshoni",
+  "version": "1.0.0",
+  "source": "index.htm",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Miraz-Uddin/chhobi-prodorshoni.git"
+  },
+  "author": "Miraz Uddin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Miraz-Uddin/chhobi-prodorshoni/issues"
+  },
+  "homepage": "https://github.com/Miraz-Uddin/chhobi-prodorshoni#readme",
+  "devDependencies": {
+    "parcel": "^2.4.0"
+  },
+  "description": "This is Photo Gallery Project"
+}
