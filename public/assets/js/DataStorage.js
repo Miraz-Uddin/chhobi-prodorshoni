@@ -1,11 +1,34 @@
 class DataStorage {
-  async fetchAllMovies() {
-    const getResponse = await fetch(`https://movies-0623.herokuapp.com/movies?_page=1&_limit=8`);
-    // getResponse.headers.forEach((key,value)=>{console.log(key+': '+value)})
-    // let url  = new URL(`http://movies-0623.herokuapp.com/movies/?_page=1&_limit=2`);
-    // console.log(url.searchParams.get(`_page`))
-    // console.log(url.searchParams.get(`_limit`))
-    return await getResponse.json();
+  async fetchMovieCollection(customUrl) {
+    const getResponse = await fetch(customUrl);
+    const arraySplitter = getResponse.headers.get('link').split(',');
+    const indexArray = arraySplitter.map(x=>x.split('rel=')[1].replace(/\W+/gm,''));
+    const linkArray = arraySplitter.map(x=>x.split(';')[0]);
+
+    let prevAvailable = false;
+    let nextAvailable = false;
+    let firstPageLink = "#";
+    let lastPageLink = "#";
+    let nextPageLink = "#";
+    let prevPageLink = "#";
+    if(indexArray.includes('next')) nextAvailable = true
+    if(indexArray.includes('prev')) prevAvailable = true
+    
+    if(nextAvailable) nextPageLink = linkArray[1].replace(/<|>/gm,'')
+    if(prevAvailable) prevPageLink = linkArray[1].replace(/<|>/gm,'')
+    
+    if(nextAvailable && prevAvailable){
+      prevPageLink = linkArray[1].replace(/<|>/gm,'')
+      nextPageLink = linkArray[2].replace(/<|>/gm,'')
+    }
+
+    firstPageLink = linkArray[0].replace(/<|>/gm,'')
+    lastPageLink = linkArray[linkArray.length-1].replace(/<|>/gm,'')
+
+    const filteredList = await getResponse.json();
+    const linkedList = { prevPageLink, firstPageLink, lastPageLink, nextPageLink };
+
+    return {linkedList,filteredList};
   }
 }
 
