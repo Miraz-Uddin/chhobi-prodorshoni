@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "source": "index.htm",
   "scripts": {
-    "start": "parcel",
-    "build": "parcel build"
+    "build": "parcel build",
+    "start": "parcel"
   },
   "repository": {
     "type": "git",
