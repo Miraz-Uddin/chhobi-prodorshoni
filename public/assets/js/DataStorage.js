@@ -11,6 +11,7 @@ class DataStorage {
     let lastPageLink = "#";
     let nextPageLink = "#";
     let prevPageLink = "#";
+    
     if(indexArray.includes('next')) nextAvailable = true
     if(indexArray.includes('prev')) prevAvailable = true
     
@@ -24,11 +25,13 @@ class DataStorage {
 
     firstPageLink = linkArray[0].replace(/<|>/gm,'')
     lastPageLink = linkArray[linkArray.length-1].replace(/<|>/gm,'')
-
+    
+    const totalPages = (new URL(lastPageLink)).searchParams.get('_page');
     const filteredList = await getResponse.json();
     const linkedList = { prevPageLink, firstPageLink, lastPageLink, nextPageLink };
+    const linkAvailable = { prevAvailable, nextAvailable, totalPages };
 
-    return {linkedList,filteredList};
+    return {linkedList,filteredList, linkAvailable};
   }
 }
 

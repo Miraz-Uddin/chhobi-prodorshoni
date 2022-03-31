@@ -114,3 +114,19 @@ input[type="password"]::-ms-reveal {
 	padding: 5px;
 	text-align: center;
 }
+
+.text-danger {
+	width: 35px;
+	height: 45px;
+	text-align: center;
+	background: #d3e9ff;
+	padding: 0;
+	font-size: 23px;
+	color: #004a95 !important;
+	margin: -3px 4px !important;
+	line-height: 43px;
+}
+
+figure {
+	min-height: 63px;
+}
