@@ -61,7 +61,7 @@ class App {
     const { dynamicPagination } = this.#loadSelectors();
     const { prevPageLink, firstPageLink, lastPageLink, nextPageLink } =
       linkedList;
-    const { prevAvailable, nextAvailable, totalPages } = linkAvailable;
+    const { prevAvailable, nextAvailable } = linkAvailable;
 
 
     const strPrev = `<li class="page-item ${prevAvailable ? "" : "disabled"} "><a data-link="${prevPageLink}" class="page-link"  href="${window.location.href}" ${prevAvailable ? "" : 'tabindex="-1" aria-disabled="true"'} >Previous</a></li>`;

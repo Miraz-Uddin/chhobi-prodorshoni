@@ -25,11 +25,12 @@ class DataStorage {
 
     firstPageLink = linkArray[0].replace(/<|>/gm,'')
     lastPageLink = linkArray[linkArray.length-1].replace(/<|>/gm,'')
-    
-    const totalPages = (new URL(lastPageLink)).searchParams.get('_page');
+    prevPageLink = prevPageLink.replace(/http:\//gm,'https://')
+    nextPageLink = nextPageLink.replace(/http:\//gm,'https://')
+
     const filteredList = await getResponse.json();
     const linkedList = { prevPageLink, firstPageLink, lastPageLink, nextPageLink };
-    const linkAvailable = { prevAvailable, nextAvailable, totalPages };
+    const linkAvailable = { prevAvailable, nextAvailable };
 
     return {linkedList,filteredList, linkAvailable};
   }
