@@ -101,7 +101,7 @@ class App {
   #generateLink(
     pageNumber = 1,
     itemLimit = 10,
-    base_url = "http://movies-0623.herokuapp.com/movies"
+    base_url = "https://movies-0623.herokuapp.com/movies"
   ) {
     return `${base_url}?_page=${pageNumber}&_limit=${itemLimit}`;
   }
